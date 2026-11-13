@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lourdes te Cocina | Rotisería y viandas en Almagro</title>
+<meta name="description" content="Rotisería y viandas semanales en Almagro, con opciones veganas. Mirá el menú de la semana y pedí por WhatsApp.">
+<meta name="theme-color" content="#1E4636">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F6F7F1; --ink:#17261D; --muted:#5B6A60; --green:#1E4636; --green2:#2C6149;
+  --sun:#F2B632; --chili:#D9432B; --card:#FFFFFF; --line:#DDE2D6;
+  --display:'Bricolage Grotesque',system-ui,sans-serif; --body:'Figtree',system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#101A14;--ink:#EEF2E9;--muted:#A3B1A6;--card:#17261D;--line:#2A3D32;--green:#0B2A1E}
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{font-family:var(--body);background:var(--bg);color:var(--ink);line-height:1.6;font-size:17px}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+h1,h2,h3{font-family:var(--display);line-height:1.05;letter-spacing:-.02em}
+h2{font-size:clamp(2rem,5vw,3.2rem);font-weight:800}
+.btn{display:inline-block;font:600 1rem var(--body);padding:14px 24px;border-radius:999px;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn-sun{background:var(--sun);color:#1b1500}
+.btn-line{border-color:currentColor;color:inherit}
+header{position:sticky;top:0;z-index:20;background:var(--green);color:#fff}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font:800 1.25rem var(--display);text-decoration:none}
+.nav nav{display:flex;gap:22px;font-size:.95rem}
+.nav nav a{text-decoration:none;opacity:.9}
+.nav nav a:hover{opacity:1;text-decoration:underline}
+.cartbtn{background:var(--sun);color:#1b1500;border:0;border-radius:999px;padding:9px 16px;font:600 .95rem var(--body);cursor:pointer}
+@media(max-width:720px){.nav nav{display:none}}
+
+/* hero */
+.hero{background:var(--green);color:#fff;padding:64px 0 0;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:end}
+.hero h1{font-size:clamp(2.8rem,8vw,5.6rem);font-weight:800}
+.hero p.lead{margin:22px 0 30px;font-size:1.15rem;max-width:30em;color:#DCE8DF}
+.hero .acts{display:flex;gap:12px;flex-wrap:wrap;padding-bottom:56px}
+.tray{background:var(--sun);color:#1b1500;border-radius:28px 28px 0 0;padding:26px 24px 30px}
+.tray h3{font-size:1.3rem;margin-bottom:4px}
+.tray small{display:block;margin-bottom:14px;opacity:.75}
+.tray li{list-style:none;display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1.5px dashed rgba(27,21,0,.35);font-weight:500}
+.tray li b{font-weight:700;white-space:nowrap}
+@media(max-width:820px){.hero .wrap{grid-template-columns:1fr}.hero .acts{padding-bottom:36px}}
+
+section{padding:80px 0}
+.sub{color:var(--muted);max-width:36em;margin:12px 0 32px}
+
+/* menu */
+.tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;margin-bottom:24px}
+.tab{flex:0 0 auto;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font:600 .95rem var(--body);padding:10px 18px;border-radius:999px;cursor:pointer}
+.tab[aria-selected="true"]{background:var(--green);color:#fff;border-color:var(--green)}
+.dishes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.dish{background:var(--card);border:1.5px solid var(--line);border-radius:20px;padding:22px;display:flex;flex-direction:column;gap:8px}
+.dish h3{font-size:1.35rem}
+.dish p{color:var(--muted);font-size:.97rem;flex:1}
+.tag{align-self:flex-start;font-size:.8rem;font-weight:600;padding:3px 10px;border-radius:999px;background:#E8EDE2;color:#2A4A38}
+.tag.v{background:#DDF2D3;color:#1F5A18}
+.dish .row{display:flex;align-items:center;justify-content:space-between;margin-top:8px}
+.price{font:800 1.4rem var(--display)}
+.add{background:var(--green);color:#fff;border:0;border-radius:999px;padding:9px 18px;font:600 .92rem var(--body);cursor:pointer}
+.add:hover{background:var(--green2)}
+
+/* pack */
+.packs{background:var(--green);color:#fff}
+.packs .sub{color:#CFE0D4}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
+.pack{border:2px solid rgba(255,255,255,.25);border-radius:22px;padding:26px}
+.pack.hot{background:var(--sun);color:#1b1500;border-color:var(--sun)}
+.pack h3{font-size:1.5rem}
+.pack .price{display:block;margin:10px 0}
+.pack p{font-size:.97rem;opacity:.9;margin-bottom:18px}
+.pack .btn{padding:11px 20px;font-size:.95rem}
+
+/* vegan */
+.vegan .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.leafs{background:#DDF2D3;color:#14420F;border-radius:26px;padding:34px}
+.leafs li{list-style:none;padding:9px 0;border-bottom:1.5px solid rgba(20,66,15,.2);font-weight:500}
+.leafs li:last-child{border:0}
+@media(prefers-color-scheme:dark){.leafs{background:#1B3A18;color:#D7F0CE}}
+@media(max-width:820px){.vegan .wrap{grid-template-columns:1fr;gap:28px}}
+
+/* how */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:26px;counter-reset:s;list-style:none;padding:0}
+.steps li{counter-increment:s;border-top:3px solid var(--green);padding-top:16px}
+.steps li::before{content:counter(s);font:800 2.4rem var(--display);color:var(--chili);display:block;line-height:1}
+.steps h3{font-size:1.3rem;margin:8px 0 4px}
+.steps p{color:var(--muted);font-size:.97rem}
+
+/* contact */
+.info{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.box{background:var(--card);border:1.5px solid var(--line);border-radius:22px;padding:28px}
+.box h3{font-size:1.4rem;margin-bottom:10px}
+.hours{width:100%;border-collapse:collapse}
+.hours td{padding:7px 0;border-bottom:1px solid var(--line)}
+.hours td:last-child{text-align:right;font-weight:600}
+.map{min-height:240px;border:0;width:100%;border-radius:14px;margin-top:14px}
+@media(max-width:820px){.info{grid-template-columns:1fr}}
+footer{background:var(--green);color:#CFE0D4;padding:34px 0;font-size:.92rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+/* cart */
+.drawer{position:fixed;inset:0 0 0 auto;width:min(400px,100%);background:var(--card);color:var(--ink);z-index:40;transform:translateX(105%);transition:transform .25s;display:flex;flex-direction:column;box-shadow:-10px 0 40px rgba(0,0,0,.25);padding:22px}
+.drawer.open{transform:none}
+.drawer h3{font-size:1.5rem;margin-bottom:12px}
+.items{flex:1;overflow:auto}
+.it{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+.it span{flex:1}
+.qty button{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--line);background:none;color:inherit;cursor:pointer;font-size:1rem}
+.qty b{display:inline-block;min-width:22px;text-align:center}
+.total{display:flex;justify-content:space-between;font:800 1.3rem var(--display);padding:14px 0}
+.drawer .btn{text-align:center;width:100%}
+.drawer textarea,.drawer input{width:100%;font:inherit;padding:10px;border:1.5px solid var(--line);border-radius:12px;background:var(--bg);color:inherit;margin-bottom:10px}
+.close{align-self:flex-end;background:none;border:0;color:inherit;font-size:1.6rem;cursor:pointer}
+.empty{color:var(--muted);padding:20px 0}
+
+/* ===== splash ===== */
+body.lock{overflow:hidden}
+.splash{position:fixed;inset:0;z-index:100;background:var(--green);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;transition:transform .9s cubic-bezier(.77,0,.18,1);overflow:hidden}
+.splash.out{transform:translateY(-100%)}
+.fall{position:absolute;top:-60px;font-size:2rem;cursor:pointer;animation:fall linear infinite;user-select:none}
+@keyframes fall{to{transform:translateY(112vh) rotate(360deg)}}
+.pot{position:relative;font-size:7rem;line-height:1;animation:bob 2.2s ease-in-out infinite;cursor:pointer;background:none;border:0}
+@keyframes bob{50%{transform:translateY(-12px) rotate(-4deg)}}
+.steam{position:absolute;top:-6px;left:50%;width:14px;height:14px;border-radius:50%;background:rgba(255,255,255,.55);filter:blur(5px);animation:steam 2.4s ease-out infinite}
+.steam:nth-child(2){margin-left:-26px;animation-delay:.8s}
+.steam:nth-child(3){margin-left:20px;animation-delay:1.6s}
+@keyframes steam{from{transform:translateY(0) scale(.6);opacity:.9}to{transform:translateY(-90px) scale(2.2);opacity:0}}
+.splash h1{font-size:clamp(2.6rem,9vw,5rem);font-weight:800;margin:20px 0 8px;animation:rise .9s .2s both}
+.splash p{color:#CFE0D4;max-width:26em;margin-bottom:28px;animation:rise .9s .5s both}
+.splash .btn{animation:rise .9s .8s both,pulse 1.8s 2s infinite}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}}
+@keyframes pulse{50%{transform:scale(1.07)}}
+.splash small{position:absolute;bottom:20px;color:#9DB8A6;animation:rise 1s 1.4s both}
+
+/* ===== extra motion ===== */
+.hero{position:relative}
+.hfloat{position:absolute;inset:0;pointer-events:none}
+.hfloat button{position:absolute;pointer-events:auto;font-size:2.4rem;background:none;border:0;cursor:pointer;animation:bob 3s ease-in-out infinite;transition:transform .2s}
+.hfloat button:hover{transform:scale(1.35) rotate(12deg)}
+@media(max-width:820px){.hfloat{display:none}}
+.hero h1 .w{display:inline-block}
+.go .hero h1 .w{animation:rise .8s calc(var(--i)*.12s) backwards}
+.tray h3 span{display:inline-block;animation:wob 2.5s infinite}
+@keyframes wob{0%,100%{transform:rotate(0)}20%{transform:rotate(-14deg)}40%{transform:rotate(12deg)}60%{transform:rotate(0)}}
+.ribbon{background:var(--sun);color:#1b1500;overflow:hidden;white-space:nowrap;padding:14px 0;font:800 1.2rem var(--display)}
+.ribbon div{display:inline-block;animation:marq 28s linear infinite}
+.ribbon span{margin:0 18px}
+@keyframes marq{to{transform:translateX(-50%)}}
+.dish{transition:transform .25s,box-shadow .25s}
+.dish:hover{transform:translateY(-6px);box-shadow:0 14px 30px rgba(23,38,29,.15)}
+.emo{font-size:2.6rem;line-height:1;align-self:flex-start;cursor:pointer;background:none;border:0;transition:transform .3s}
+.dish:hover .emo{transform:rotate(-12deg) scale(1.2)}
+.emo:active{transform:scale(.8)}
+.dishes .dish{animation:pop .5s both}
+@keyframes pop{from{opacity:0;transform:scale(.92) translateY(14px)}}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s}
+.rv.in{opacity:1;transform:none}
+.pack{transition:transform .25s}.pack:hover{transform:translateY(-6px) rotate(-.8deg)}
+.pack h3 em{font-style:normal;display:inline-block;margin-right:6px}
+.pack:hover h3 em{animation:wob .8s}
+.steps h3 em{font-style:normal;margin-right:6px}
+.bump{animation:bumpk .5s}
+@keyframes bumpk{30%{transform:scale(1.3) rotate(-6deg)}60%{transform:scale(.95)}}
+.leafs li{transition:transform .2s,padding .2s}.leafs li:hover{transform:translateX(10px)}
+.fx{position:fixed;z-index:200;pointer-events:none;font-size:1.6rem}
+</style>
+</head>
+<body class="lock">
+<div class="splash" id="splash" role="dialog" aria-label="Bienvenida">
+  <div class="fall-layer" id="fallLayer"></div>
+  <button class="pot" id="pot" aria-label="Olla de bienvenida"><i class="steam"></i><i class="steam"></i><i class="steam"></i>🍲</button>
+  <h1>Lourdes te Cocina</h1>
+  <p>Comida casera, hecha cada día en Almagro. Viandas para toda la semana, con opciones veganas.</p>
+  <button class="btn btn-sun" id="enter">Ver el menú</button>
+  <small>Tocá la olla y las comidas que caen</small>
+</div>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#inicio">Lourdes te Cocina</a>
+    <nav>
+      <a href="#menu">Menú de la semana</a>
+      <a href="#packs">Packs</a>
+      <a href="#vegano">Veganas</a>
+      <a href="#como">Cómo pedir</a>
+      <a href="#contacto">Dónde estamos</a>
+    </nav>
+    <button class="cartbtn" id="openCart" aria-label="Abrir pedido">Mi pedido (<span id="count">0</span>)</button>
+  </div>
+</header>
+
+<main id="inicio">
+<div class="hero">
+  <div class="hfloat" aria-hidden="true">
+    <button style="top:14%;left:46%" tabindex="-1">🥗</button>
+    <button style="top:52%;left:50%;animation-delay:.6s" tabindex="-1">🍝</button>
+    <button style="top:8%;left:90%;animation-delay:1.1s" tabindex="-1">🥟</button>
+    <button style="top:30%;left:3%;animation-delay:1.6s" tabindex="-1">🌱</button>
+  </div>
+  <div class="wrap">
+    <div>
+      <h1><span class="w" style="--i:0">Cocina</span> <span class="w" style="--i:1">casera,</span> <span class="w" style="--i:2">lista</span> <span class="w" style="--i:3">para</span> <span class="w" style="--i:4">tu</span> <span class="w" style="--i:5">semana.</span></h1>
+      <p class="lead">Rotisería y viandas en Almagro. Platos del día, viandas semanales y opciones veganas, hechos todos los días. Pedís por acá y te llega por WhatsApp.</p>
+      <div class="acts">
+        <a class="btn btn-sun" href="#menu">Ver el menú de la semana</a>
+        <a class="btn btn-line" href="#como">Cómo pedir</a>
+      </div>
+    </div>
+    <aside class="tray" aria-label="Hoy en el mostrador">
+      <h3><span>🍴</span> Hoy en el mostrador</h3>
+      <small id="todayLabel">Platos del día</small>
+      <ul id="todayList"></ul>
+    </aside>
+  </div>
+</div>
+
+<div class="ribbon" aria-hidden="true"><div><span>🥘 Viandas semanales</span><span>🌱 Opciones veganas</span><span>🍝 Pastas caseras</span><span>🥟 Empanadas</span><span>🥗 Verduras de estación</span><span>🍗 Milanesas</span><span>🍲 Guisos</span><span>🥘 Viandas semanales</span><span>🌱 Opciones veganas</span><span>🍝 Pastas caseras</span><span>🥟 Empanadas</span><span>🥗 Verduras de estación</span><span>🍗 Milanesas</span><span>🍲 Guisos</span><span>🥘 Viandas semanales</span><span>🌱 Opciones veganas</span><span>🍝 Pastas caseras</span><span>🥟 Empanadas</span><span>🥗 Verduras de estación</span><span>🍗 Milanesas</span><span>🍲 Guisos</span><span>🥘 Viandas semanales</span><span>🌱 Opciones veganas</span><span>🍝 Pastas caseras</span><span>🥟 Empanadas</span><span>🥗 Verduras de estación</span><span>🍗 Milanesas</span><span>🍲 Guisos</span></div></div>
+
+<section id="menu">
+  <div class="wrap">
+    <h2>Menú de la semana</h2>
+    <p class="sub">Elegí el día, sumá lo que quieras y armá tu pedido. Cada plato se entrega en vianda lista para calentar.</p>
+    <div class="tabs" role="tablist" id="tabs"></div>
+    <div class="dishes" id="dishes"></div>
+  </div>
+</section>
+
+<section class="packs" id="packs">
+  <div class="wrap">
+    <h2>Packs semanales</h2>
+    <p class="sub">Resolvé la semana de una vez. Menos decisiones, mejor precio.</p>
+    <div class="pgrid">
+      <div class="pack"><h3><em>🥡</em>Pack 3 viandas</h3><span class="price">$ 21.000</span><p>Tres viandas a elegir del menú. Ideal para los días de oficina.</p><button class="btn btn-line" data-pack="Pack 3 viandas|21000">Agregar al pedido</button></div>
+      <div class="pack hot"><h3><em>🍱</em>Pack 5 viandas</h3><span class="price">$ 33.000</span><p>De lunes a viernes cubierto. El más elegido.</p><button class="btn" style="background:#1b1500;color:#fff" data-pack="Pack 5 viandas|33000">Agregar al pedido</button></div>
+      <div class="pack"><h3><em>🥬</em>Pack vegano 5</h3><span class="price">$ 34.000</span><p>Cinco viandas 100% veganas, con proteína vegetal y verduras de estación.</p><button class="btn btn-line" data-pack="Pack vegano 5 viandas|34000">Agregar al pedido</button></div>
+    </div>
+  </div>
+</section>
+
+<section class="vegan" id="vegano">
+  <div class="wrap">
+    <div>
+      <h2>Hay lugar para todos en la mesa.</h2>
+      <p class="sub" style="margin-bottom:22px">Todas las semanas sumamos platos veganos con la misma dedicación que el resto del menú. Sin vueltas ni opciones de relleno.</p>
+      <a class="btn btn-sun" href="#menu" onclick="filterVeg()">Ver solo veganas</a>
+    </div>
+    <ul class="leafs">
+      <li>Milanesas de lentejas con puré rústico</li>
+      <li>Tarta de zapallo y espinaca</li>
+      <li>Guiso de garbanzos y verduras</li>
+      <li>Hamburguesas de legumbres con ensalada</li>
+    </ul>
+  </div>
+</section>
+
+<section id="como">
+  <div class="wrap">
+    <h2>Pedir es simple</h2>
+    <p class="sub">Sin apps ni registros.</p>
+    <ol class="steps">
+      <li><h3><em>🍽️</em>Elegí tus platos</h3><p>Navegá el menú por día y sumá viandas o un pack semanal.</p></li>
+      <li><h3><em>📲</em>Mandá el pedido</h3><p>Con un toque se arma el mensaje y se abre WhatsApp con todo detallado.</p></li>
+      <li><h3><em>🛵</em>Retirá o pedí envío</h3><p>Pasá por el local en Almagro o coordinamos la entrega por la zona.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="contacto" style="padding-top:0">
+  <div class="wrap">
+    <h2 style="margin-bottom:28px">Dónde estamos</h2>
+    <div class="info">
+      <div class="box">
+        <h3>Almagro</h3>
+        <p>Bartolomé Mitre 4438, Buenos Aires</p>
+        <iframe class="map" title="Mapa de Lourdes te Cocina" loading="lazy" src="https://www.google.com/maps?q=Bartolom%C3%A9%20Mitre%204438%20Buenos%20Aires&output=embed"></iframe>
+      </div>
+      <div class="box">
+        <h3>Horarios</h3>
+        <table class="hours">
+          <tr><td>Lunes a viernes</td><td>10:00 – 20:00</td></tr>
+          <tr><td>Sábados</td><td>10:00 – 15:00</td></tr>
+          <tr><td>Domingos</td><td>Cerrado</td></tr>
+        </table>
+        <p style="margin:18px 0 14px;color:var(--muted)">Los pedidos de viandas semanales se toman hasta el viernes anterior.</p>
+        <a class="btn btn-sun" id="waDirect" href="#" target="_blank" rel="noopener">Escribinos por WhatsApp</a>
+        <p style="margin-top:14px"><a href="https://www.instagram.com/lourdestecocina" target="_blank" rel="noopener">@lourdestecocina en Instagram</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Lourdes te Cocina · Almagro, Buenos Aires</span>
+    <span>Sitio diseñado por Veltri Studio</span>
+  </div>
+</footer>
+
+<aside class="drawer" id="drawer" aria-label="Mi pedido" aria-hidden="true">
+  <button class="close" id="closeCart" aria-label="Cerrar">×</button>
+  <h3>Mi pedido</h3>
+  <div class="items" id="items"></div>
+  <div class="total"><span>Total</span><span id="total">$ 0</span></div>
+  <input id="name" placeholder="Tu nombre" autocomplete="name">
+  <textarea id="note" rows="2" placeholder="Aclaraciones (retiro, envío, alergias)"></textarea>
+  <a class="btn btn-sun" id="send" href="#" target="_blank" rel="noopener">Enviar pedido por WhatsApp</a>
+</aside>
+
+<script>
+// ====== DATOS EDITABLES ======
+const WA = "5491100000000"; // número de WhatsApp (con código de país, sin + ni espacios)
+const MENU = {
+  "Lunes":[
+    {n:"Milanesa de pollo con puré",d:"Pollo empanado al horno con puré de papa cremoso.",p:7500},
+    {n:"Tarta de zapallo y espinaca",d:"Masa casera, relleno de verduras y queso.",p:6800},
+    {n:"Milanesas de lentejas con puré rústico",d:"Opción vegana, con puré de papa y calabaza.",p:7200,v:1}
+  ],
+  "Martes":[
+    {n:"Pastel de papa",d:"Carne cortada a cuchillo, cubierta de puré gratinado.",p:7800},
+    {n:"Pollo al verdeo con arroz",d:"Suprema en salsa de verdeo y crema, con arroz blanco.",p:7600},
+    {n:"Guiso de garbanzos y verduras",d:"Opción vegana, especiado y bien sustancioso.",p:7000,v:1}
+  ],
+  "Miércoles":[
+    {n:"Ñoquis con salsa fileto",d:"Ñoquis de papa caseros, salsa de tomate y albahaca.",p:7200},
+    {n:"Bife de chorizo con ensalada",d:"Corte tierno a la plancha con ensalada mixta.",p:9500},
+    {n:"Hamburguesas de legumbres",d:"Opción vegana, con ensalada y salsa de yogur vegetal.",p:7200,v:1}
+  ],
+  "Jueves":[
+    {n:"Canelones de verdura y ricota",d:"Salsa blanca y filetto, gratinados.",p:7800},
+    {n:"Estofado de carne con papas",d:"Cocción lenta con verduras de estación.",p:8000},
+    {n:"Curry de verduras con arroz",d:"Opción vegana, leche de coco y especias suaves.",p:7200,v:1}
+  ],
+  "Viernes":[
+    {n:"Empanadas (docena)",d:"Carne cortada a cuchillo, pollo o jamón y queso.",p:14000},
+    {n:"Lasaña de carne",d:"Capas de pasta fresca, boloñesa y bechamel.",p:8200},
+    {n:"Berenjenas rellenas",d:"Opción vegana, con mix de verduras y semillas.",p:7200,v:1}
+  ]
+};
+// =============================
+const $=s=>document.querySelector(s);
+const fmt=n=>"$ "+n.toLocaleString("es-AR");
+const days=Object.keys(MENU);
+let day=days[Math.min(Math.max(new Date().getDay()-1,0),4)];
+let onlyVeg=false;
+let cart={};
+
+function renderToday(){
+  $("#todayLabel").textContent=day+" · platos del día";
+  $("#todayList").innerHTML=MENU[day].map(x=>`<li><span>${x.n}</span><b>${fmt(x.p)}</b></li>`).join("");
+}
+function renderTabs(){
+  $("#tabs").innerHTML=days.map(d=>`<button class="tab" role="tab" aria-selected="${d===day}" data-d="${d}">${d}</button>`).join("");
+}
+function renderDishes(){
+  const list=MENU[day].filter(x=>!onlyVeg||x.v);
+  $("#dishes").innerHTML=list.map(x=>`
+   <article class="dish">
+     <button class="emo" aria-label="Disfrutar">${emo(x.n)}</button><span class="tag ${x.v?'v':''}">${x.v?'Vegano':'Casero'}</span>
+     <h3>${x.n}</h3><p>${x.d}</p>
+     <div class="row"><span class="price">${fmt(x.p)}</span>
+     <button class="add" data-e="${emo(x.n)}" data-n="${x.n} (${day})" data-p="${x.p}">Agregar</button></div>
+   </article>`).join("")||'<p class="empty">No hay platos veganos cargados para este día.</p>';
+}
+function filterVeg(){onlyVeg=true;renderDishes();}
+$("#tabs").addEventListener("click",e=>{
+  const b=e.target.closest(".tab");if(!b)return;
+  day=b.dataset.d;onlyVeg=false;renderTabs();renderDishes();renderToday();
+});
+function add(n,p){cart[n]=cart[n]||{p:+p,q:0};cart[n].q++;renderCart();}
+document.addEventListener("click",e=>{
+  const a=e.target.closest(".add");if(a){add(a.dataset.n,a.dataset.p);return;}
+  const k=e.target.closest("[data-pack]");if(k){const [n,p]=k.dataset.pack.split("|");add(n,p);openCart();}
+  const q=e.target.closest("[data-q]");if(q){const n=q.dataset.k;cart[n].q+=+q.dataset.q;if(cart[n].q<=0)delete cart[n];renderCart();}
+});
+function renderCart(){
+  const ks=Object.keys(cart);let total=0,cnt=0;
+  $("#items").innerHTML=ks.length?ks.map(k=>{const c=cart[k];total+=c.p*c.q;cnt+=c.q;
+    return `<div class="it"><span>${k}</span><div class="qty"><button data-q="-1" data-k="${k}" aria-label="Quitar uno">−</button><b>${c.q}</b><button data-q="1" data-k="${k}" aria-label="Sumar uno">+</button></div></div>`}).join(""):'<p class="empty">Todavía no sumaste nada. Elegí algo del menú.</p>';
+  $("#count").textContent=cnt;$("#total").textContent=fmt(total);
+  const lines=ks.map(k=>`• ${cart[k].q} x ${k}`).join("\n");
+  const nm=$("#name").value.trim(),nt=$("#note").value.trim();
+  const msg=`Hola Lourdes! Soy ${nm||"[mi nombre]"}. Quiero hacer este pedido:\n${lines||"(sin items)"}\n\nTotal: ${fmt(total)}${nt?"\nNota: "+nt:""}`;
+  $("#send").href=`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`;
+}
+function openCart(){$("#drawer").classList.add("open");$("#drawer").setAttribute("aria-hidden","false");}
+$("#openCart").onclick=openCart;
+$("#closeCart").onclick=()=>{$("#drawer").classList.remove("open");$("#drawer").setAttribute("aria-hidden","true");};
+document.addEventListener("keydown",e=>{if(e.key==="Escape")$("#closeCart").click();});
+$("#name").oninput=$("#note").oninput=renderCart;
+$("#waDirect").href=`https://wa.me/${WA}?text=${encodeURIComponent("Hola! Quiero consultar por las viandas de la semana.")}`;
+renderTabs();renderDishes();renderToday();renderCart();
+
+// ====== EFECTOS ======
+function emo(n){n=n.toLowerCase();const m=[["lenteja","🥙"],["milanesa","🍗"],["tarta","🥧"],["pastel","🥔"],["pollo","🍗"],["guiso","🍲"],["ñoqui","🍝"],["bife","🥩"],["hamburg","🍔"],["canelon","🍝"],["estofado","🍲"],["curry","🍛"],["empanada","🥟"],["lasa","🍝"],["berenjena","🍆"]];for(const[k,e]of m)if(n.includes(k))return e;return"🍽️";}
+const reduce=matchMedia("(prefers-reduced-motion:reduce)").matches;
+function burst(x,y,list,n=10){if(reduce)return;for(let i=0;i<n;i++){const e=document.createElement("span");e.className="fx";e.textContent=list[i%list.length];e.style.left=x+"px";e.style.top=y+"px";document.body.appendChild(e);const a=Math.random()*Math.PI*2,d=60+Math.random()*110;e.animate([{transform:"translate(0,0) scale(.4)",opacity:1},{transform:`translate(${Math.cos(a)*d}px,${Math.sin(a)*d-40}px) scale(1.3) rotate(${Math.random()*200-100}deg)`,opacity:0}],{duration:900+Math.random()*400,easing:"cubic-bezier(.2,.8,.3,1)"}).onfinish=()=>e.remove();}}
+const FOODS=["🍲","🥗","🍝","🥟","🍗","🌱","🥕","🍅","🧄","🌿"];
+function fly(btn){if(reduce)return;const r=btn.getBoundingClientRect(),c=$("#openCart").getBoundingClientRect();const e=document.createElement("span");e.className="fx";e.textContent=btn.dataset.e||"🍽️";e.style.left=r.left+"px";e.style.top=r.top+"px";e.style.fontSize="2rem";document.body.appendChild(e);e.animate([{transform:"translate(0,0) scale(1)"},{transform:`translate(${(c.left-r.left)/2}px,-90px) scale(1.5)`,offset:.5},{transform:`translate(${c.left-r.left}px,${c.top-r.top}px) scale(.4)`,opacity:.6}],{duration:800,easing:"ease-in-out"}).onfinish=()=>{e.remove();const b=$("#openCart");b.classList.remove("bump");void b.offsetWidth;b.classList.add("bump");};}
+document.addEventListener("click",e=>{
+  const a=e.target.closest(".add");if(a){const r=a.getBoundingClientRect();fly(a);burst(r.left+r.width/2,r.top,[a.dataset.e||"🍽️","✨"],6);}
+  const m=e.target.closest(".emo");if(m){const r=m.getBoundingClientRect();burst(r.left+20,r.top+20,[m.textContent,"✨","💛"],8);}
+  const h=e.target.closest(".hfloat button");if(h){const r=h.getBoundingClientRect();burst(r.left+20,r.top+20,FOODS,12);}
+});
+// splash
+(function(){
+  const sp=$("#splash"),layer=$("#fallLayer");
+  for(let i=0;i<16;i++){const f=document.createElement("span");f.className="fall";f.textContent=FOODS[i%FOODS.length];f.style.left=(Math.random()*94)+"%";f.style.animationDuration=(5+Math.random()*6)+"s";f.style.animationDelay=(-Math.random()*9)+"s";f.style.fontSize=(1.6+Math.random()*1.6)+"rem";layer.appendChild(f);}
+  layer.addEventListener("click",e=>{if(e.target.classList.contains("fall")){burst(e.clientX,e.clientY,FOODS,10);e.target.style.visibility="hidden";}});
+  $("#pot").onclick=e=>burst(e.clientX,e.clientY,FOODS,14);
+  let done=false;
+  function enter(){if(done)return;done=true;sp.classList.add("out");document.body.classList.remove("lock");document.body.classList.add("go");setTimeout(()=>sp.remove(),1000);}
+  $("#enter").onclick=enter;
+  setTimeout(enter,9000);
+  addEventListener("keydown",e=>{if(e.key==="Enter"||e.key==="Escape")enter();});
+})();
+// reveal
+(function(){
+  const els=document.querySelectorAll("section h2,.sub,.pack,.steps li,.box,.leafs,.tabs");
+  els.forEach(e=>e.classList.add("rv"));
+  if(!("IntersectionObserver"in window)){els.forEach(e=>e.classList.add("in"));return;}
+  const io=new IntersectionObserver(en=>en.forEach(x=>{if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target);}}),{threshold:.15});
+  els.forEach(e=>io.observe(e));
+})();
+</script>
+</body>
+</html>
